@@ -5,25 +5,43 @@
       <button @click="exploreMore">Бронюйте Одразу!</button>
     </header>
   </div>
-  <div class="section" id="section2">
-    <h1>Explore Our Dining</h1>
+  <div class="section" id="appartaments">
+    <h2>Апартаменти</h2>
     <p>
-      some adittional text some adittional text some adittional text some
-      adittional text some adittional text some adittional text
+      Наш готель пропонує широкий вибір апартаментів, від стандартних номерів до
+      люксів, щоб забезпечити комфорт кожного гостя.
     </p>
+    <room-item v-for="room in rooms" :key="room.id" :room="room"></room-item>
   </div>
-  <div class="section" id="section3">
-    <h1>Explore Our Dining</h1>
-    <img
-      src="https://image-tc.galaxy.tf/wijpeg-ay9bwdfei91yjxj1hhwg7e09e/promo1.jpg?width=1920"
-      alt="no img"
-    />
+
+  <div class="section" id="location">
+    <h2>Локація</h2>
+    <img src="" alt="" class="locationImg" />
   </div>
+
+  <div class="section" id="welcome">
+    <h2>Наша рецепція завжди рада допомогти</h2>
+  </div>
+
+  <footer-comp />
 </template>
 
 <script>
+import FooterComp from '@/components/FooterComp.vue';
+import RoomItem from '@/components/RoomItem.vue';
+
 export default {
+  components: { FooterComp, RoomItem },
   name: 'HomePage',
+  data() {
+    return {
+      rooms: [
+        { id: 1, name: 'Standard Room' },
+        { id: 2, name: 'Suite' },
+      ],
+    };
+  },
+
   methods: {
     exploreMore() {
       alert("Let's explore!");
@@ -59,51 +77,6 @@ export default {
   background-position: center;
   position: relative;
   overflow: hidden;
-}
-
-#section2 {
-  flex-direction: row;
-  justify-content: space-around;
-  background-image: url('https://images.unsplash.com/photo-1473958828028-53df95f0b5ed?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-}
-
-#section2 h1 {
-  width: 40vw;
-  background-color: rgb(0 0 0/0.5);
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-#section2 p {
-  background-color: rgb(0 0 0/0.5);
-  padding: 20px;
-  border-radius: 10px;
-  width: 40vw;
-}
-
-#section3 {
-  background-color: #262626;
-  text-align: center;
-  padding: 50px 0;
-  justify-content: space-evenly;
-}
-
-#section3 h1 {
-  color: #ffffff;
-  margin-bottom: 20px;
-}
-
-#section3 img {
-  width: 55vw;
-  border: 5px solid #ffffff;
-  border-radius: 10px;
-  transition: transform 1.5s ease, box-shadow 0.5s ease;
-}
-
-#section3 img:hover {
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
-  transform: scale(1.3);
 }
 
 header {
@@ -146,12 +119,5 @@ button:hover {
   opacity: 100%;
   transform: translateY(-5px);
   box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 </style>

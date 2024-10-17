@@ -25,15 +25,15 @@ export default {
   width: 40vw;
   flex-direction: column;
   align-items: center;
-  background-color: #f5f5f5; // Light gray background
+  background-color: #f5f5f5;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px); // Subtle lift on hover
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); // Stronger shadow on hover
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -61,7 +61,7 @@ export default {
 
 button {
   padding: 10px 20px;
-  background-color: #ff5a5f; // Airbnb-like red color
+  background-color: #ff5a5f;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -70,7 +70,7 @@ button {
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #ff1f24; // Darker red on hover
+    background-color: #ff1f24;
   }
 }
 </style>
