@@ -1,0 +1,88 @@
+{
+  "hotel_title": "Kilikia Hotel",
+  "book_now": "Book Now!",
+  "apartments_title": "Apartments",
+  "apartments_description": "Our hotel offers a wide selection of apartments, from standard rooms to suites, to ensure the comfort of every guest.",
+  "location_title": "Location",
+  "location_description": "Our hotel offers a wide selection of apartments, from standard rooms to suites, to ensure the comfort of every guest.",
+  "reception_message": "Our reception is always happy to help",
+  "reserve": "Reserve",
+  "features": {
+    "excellent_location": "Excellent Location",
+    "free_parking": "Free Parking",
+    "support_24_7": "24/7 Support",
+    "high_speed_wifi": "High-Speed Wi-Fi"
+  },
+  "footer": {
+    "information": "Information",
+    "address": "Address:",
+    "address_detail": "Bohdan Khmelnytsky Square, 2, Uzhhorod, Zakarpattia Oblast, 88000",
+    "contacts": "Contacts",
+    "reception": "Reception:",
+    "phone_1": "+380 312 619 050",
+    "phone_2": "+38 050 377 60 64",
+    "email": "Email:",
+    "email_address": "reservationhoteluzhgorod.com",
+    "working_hours": "Working Hours",
+    "reception_hours": "Reception is open 24/7.",
+    "copyright": "© 2024 Uzhhorod Hotel. All rights reserved.",
+    "created_by": "Created by: Globalistic + ALDESIGN WebStudio"
+  },
+  "room_catalog": {
+    "title": "Rooms"
+  },
+  "navbar": {
+    "home": "Home",
+    "catalog": "Catalog",
+    "contact": "Contact Us"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Submit",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "Enter your email",
+    "messagePlaceholder": "Enter your message",
+    "successTitle": "Thank you!",
+    "successMessage": "Your feedback has been submitted.",
+    "okButton": "OK"
+  },
+  "login": {
+    "title": "Log In",
+    "email": "E-mail",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Password?",
+    "submit": "Login"
+  },
+  "sort": {
+    "label": "Sort by price:",
+    "ascending": "Ascending",
+    "descending": "Descending"
+  },
+  "addRoom": {
+    "addRoomBtn": "Add New Room",
+    "form": {
+      "titleLabel": "Title:",
+      "priceLabel": "Price:",
+      "imgUrlLabel": "Image URL:",
+      "submitButton": "Add Room",
+      "closeButton": "Close"
+    }
+  },
+  "itemCard": {
+    "roomImageAlt": "Room Image",
+    "title": "Title",
+    "pricePerNight": "per night",
+    "peopleOccupancy": "people",
+    "edit": "Edit",
+    "reserve": "Reserve",
+    "delete": "Delete",
+    "editTitlePlaceholder": "Title",
+    "editPricePlaceholder": "Price per night",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}

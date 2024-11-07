@@ -1,23 +1,39 @@
 <template>
   <div id="app">
-    <NavBar />
-    <router-view />
+    <header>
+      <h1>Room Booking</h1>
+      <button @click="toggleAdmin">
+        {{ isAdmin ? 'Switch to User View' : 'Switch to Admin View' }}
+      </button>
+    </header>
+    <RoomList />
+    <Bucket />
   </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue';
+import { mapGetters, mapActions } from 'vuex';
+import RoomList from './components/RoomList.vue';
+import Bucket from './components/BucketComp.vue';
+
 export default {
+  name: 'App',
   components: {
-    NavBar,
+    RoomList,
+    Bucket,
+  },
+  computed: {
+    ...mapGetters(['isAdmin']),
+  },
+  methods: {
+    ...mapActions(['setAdmin']),
+    toggleAdmin() {
+      this.setAdmin(!this.isAdmin);
+    },
   },
 };
 </script>
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-}
+/* Add some basic styling */
 </style>

@@ -1,0 +1,89 @@
+{
+  "hotel_title": "Готель Кілікія",
+  "book_now": "Бронюйте Одразу!",
+  "apartments_title": "Апартаменти",
+  "apartments_description": "Наш готель пропонує широкий вибір апартаментів, від стандартних номерів до люксів, щоб забезпечити комфорт кожного гостя.",
+  "location_title": "Локація",
+  "location_description": "Наш готель пропонує широкий вибір апартаментів, від стандартних номерів до люксів, щоб забезпечити комфорт кожного гостя.",
+  "reception_message": "Наша рецепція завжди рада допомогти",
+  "reserve": "Забронювати",
+  "features": {
+    "excellent_location": "Відмінне розташування",
+    "free_parking": "Безкоштовна парковка",
+    "support_24_7": "Цілодобова підтримка",
+    "high_speed_wifi": "Високошвидкісний Wi-Fi"
+  },
+  "footer": {
+    "information": "Інформація",
+    "address": "Адреса:",
+    "address_detail": "площа Богдана Хмельницького, 2, Ужгород, Закарпатська область, 88000",
+    "contacts": "Контакти",
+    "reception": "Рецепція:",
+    "phone_1": "+380 312 619 050",
+    "phone_2": "+38 050 377 60 64",
+    "email": "Email:",
+    "email_address": "reservation@hoteluzhgorod.com",
+    "working_hours": "Години роботи",
+    "reception_hours": "Рецепція працює цілодобово.",
+    "copyright": "© 2024 Готель «Ужгород». Всі права захищено.",
+    "created_by": "Зроблено: Globalistic + ALDESIGN WebStudio"
+  },
+
+  "room_catalog": {
+    "title": "Номери"
+  },
+  "navbar": {
+    "home": "Головна",
+    "catalog": "Каталог",
+    "contact": "Зв'язатися з нами"
+  },
+  "feedback": {
+    "title": "Зворотний зв'язок",
+    "name": "Ім'я",
+    "email": "Електронна пошта",
+    "message": "Повідомлення",
+    "submit": "Відправити",
+    "namePlaceholder": "Введіть своє ім'я",
+    "emailPlaceholder": "Введіть свою електронну пошту",
+    "messagePlaceholder": "Введіть своє повідомлення",
+    "successTitle": "Дякуємо!",
+    "successMessage": "Ваш відгук було надіслано.",
+    "okButton": "ОК"
+  },
+  "login": {
+    "title": "Увійти",
+    "email": "E-mail",
+    "password": "Пароль",
+    "rememberMe": "Запам'ятати мене",
+    "forgotPassword": "Забули пароль?",
+    "submit": "Увійти"
+  },
+  "sort": {
+    "label": "Сортувати за ціною:",
+    "ascending": "За зростанням",
+    "descending": "За спаданням"
+  },
+  "addRoom": {
+    "addRoomBtn": "Додати номер",
+    "form": {
+      "titleLabel": "Назва:",
+      "priceLabel": "Ціна:",
+      "imgUrlLabel": "URL зображення:",
+      "submitButton": "Додати номер",
+      "closeButton": "Закрити"
+    }
+  },
+  "itemCard": {
+    "roomImageAlt": "Зображення кімнати",
+    "title": "Назва",
+    "pricePerNight": "за ніч",
+    "peopleOccupancy": "людей",
+    "edit": "Редагувати",
+    "reserve": "Бронювати",
+    "delete": "Видалити",
+    "editTitlePlaceholder": "Назва",
+    "editPricePlaceholder": "Ціна за ніч",
+    "save": "Зберегти",
+    "cancel": "Скасувати"
+  }
+}
