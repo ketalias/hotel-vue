@@ -63,7 +63,7 @@ export default {
   methods: {
     login() {
       const adminEmail = 'admin@example.com';
-      const adminPassword = 'password123';
+      const adminPassword = '123';
 
       if (this.email === adminEmail && this.password === adminPassword) {
         if (this.rememberMe) {

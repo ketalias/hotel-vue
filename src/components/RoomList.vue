@@ -48,6 +48,44 @@
               aria-label="Room image URL"
             />
           </div>
+          <div>
+            <label for="maxOccupancy">{{
+              $t('addRoom.form.maxOccupancyLabel')
+            }}</label>
+            <input
+              type="number"
+              id="maxOccupancy"
+              v-model="newRoom.maxOccupancy"
+              required
+              placeholder="Max occupancy"
+              aria-label="Max occupancy"
+            />
+          </div>
+          <div>
+            <label for="availability">{{
+              $t('addRoom.form.availabilityLabel')
+            }}</label>
+            <input
+              type="text"
+              id="availability"
+              v-model="newRoom.availability"
+              required
+              placeholder="Availability"
+              aria-label="Room availability"
+            />
+          </div>
+          <div>
+            <label for="description">{{
+              $t('addRoom.form.descriptionLabel')
+            }}</label>
+            <textarea
+              id="description"
+              v-model="newRoom.description"
+              required
+              placeholder="Room description"
+              aria-label="Room description"
+            ></textarea>
+          </div>
           <div class="form-buttons">
             <button type="submit" class="submit-btn">
               {{ $t('addRoom.form.submitButton') }}
@@ -94,6 +132,12 @@ export default {
 
   computed: {
     ...mapGetters(['sortedRooms']),
+    isAdmin() {
+      return (
+        localStorage.getItem('isAdmin') === 'true' ||
+        sessionStorage.getItem('isAdmin') === 'true'
+      );
+    },
   },
 
   methods: {

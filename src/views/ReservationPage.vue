@@ -1,6 +1,6 @@
 <template>
   <div class="reservation-container">
-    <div v-if="room" class="room-details">
+    <div class="room-details">
       <h1 class="room-title">{{ room.title }}</h1>
       <div class="row">
         <img :src="room.imgUrl" alt="Room Image" class="room-image" />
@@ -28,27 +28,48 @@
           :value="checkoutDate"
           @input="updateCheckoutDate($event.target.value)"
         />
+        <label for="name">Ім'я:</label>
+        <input
+          type="text"
+          id="name"
+          v-model="userName"
+          placeholder="Введіть ваше ім'я"
+        />
+        <label for="surname">Прізвище:</label>
+        <input
+          type="text"
+          id="surname"
+          v-model="userSurname"
+          placeholder="Введіть ваше прізвище"
+        />
       </div>
       <button @click="reserveRoom" class="reserve-button">Бронювати</button>
-    </div>
-    <div v-else>
-      <p>Завантаження даних про номер...</p>
     </div>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import Swal from 'sweetalert2';
 
 export default {
   name: 'ReservationPage',
+  data() {
+    return {
+      userName: '',
+      userSurname: '',
+    };
+  },
   computed: {
-    ...mapGetters(['getRoomById', 'checkinDate', 'checkoutDate']),
+    ...mapGetters(['getRoomById']),
     room() {
       const roomId = this.$route.params.id;
-      return this.getRoomById(parseInt(roomId));
+      const room = this.getRoomById(roomId);
+      console.log('Room:', room);
+      return room;
     },
   },
+
   methods: {
     ...mapActions(['addRoomToBucket', 'setCheckinDate', 'setCheckoutDate']),
     updateCheckinDate(date) {
@@ -58,21 +79,40 @@ export default {
       this.setCheckoutDate(date);
     },
     reserveRoom() {
-      if (this.room) {
+      if (this.room && this.userName && this.userSurname) {
         this.addRoomToBucket({
           ...this.room,
           checkinDate: this.checkinDate,
           checkoutDate: this.checkoutDate,
+          userName: this.userName,
+          userSurname: this.userSurname,
         });
+
         Swal.fire({
           title: 'Бронювання успішне!',
-          text: `Номер "${this.room.title}" було заброньовано на дати ${this.checkinDate} - ${this.checkoutDate}.`,
+          text: `Номер "${this.room.title}" було заброньовано на дати ${this.checkinDate} - ${this.checkoutDate} для ${this.userName} ${this.userSurname}.`,
           icon: 'success',
           confirmButtonText: 'OK',
           confirmButtonColor: '#2ecc71',
         });
+
+        this.updateCheckinDate('');
+        this.updateCheckoutDate('');
+        this.userName = '';
+        this.userSurname = '';
+      } else {
+        Swal.fire({
+          title: 'Помилка!',
+          text: "Будь ласка, введіть своє ім'я та прізвище перед бронюванням.",
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
       }
     },
+  },
+
+  mounted() {
+    this.$store.dispatch('fetchRooms');
   },
 };
 </script>

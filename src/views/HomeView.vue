@@ -1,47 +1,53 @@
 <template>
   <div class="home-page">
     <header>
-      <h1>Kilikia Hotel</h1>
-      <button @click="exploreMore">Бронюйте Одразу!</button>
+      <h1 class="title">{{ $t('hotel_title') }}</h1>
+      <router-link to="/catalog">
+        <button>{{ $t('book_now') }}</button>
+      </router-link>
     </header>
   </div>
   <div class="section" id="appartaments">
-    <h2>Апартаменти</h2>
-    <p>
-      Наш готель пропонує широкий вибір апартаментів, від стандартних номерів до
-      люксів, щоб забезпечити комфорт кожного гостя.
-    </p>
-    <room-item v-for="room in rooms" :key="room.id" :room="room"></room-item>
+    <div class="description">
+      <h1>{{ $t('apartments_title') }}</h1>
+      <p>{{ $t('apartments_description') }}</p>
+    </div>
+    <courusel-comp></courusel-comp>
   </div>
-
   <div class="section" id="location">
-    <h2>Локація</h2>
-    <img src="" alt="" class="locationImg" />
+    <div class="description">
+      <h1>{{ $t('location_title') }}</h1>
+      <p>{{ $t('location_description') }}</p>
+    </div>
+    <div class="map">
+      <ul>
+        <li>{{ $t('features.excellent_location') }}</li>
+        <li>{{ $t('features.free_parking') }}</li>
+        <li>{{ $t('features.support_24_7') }}</li>
+        <li>{{ $t('features.high_speed_wifi') }}</li>
+      </ul>
+      <img
+        src="https://todocodigo.net/img/626.jpg"
+        alt="no-img"
+        class="locationImg"
+      />
+    </div>
   </div>
-
   <div class="section" id="welcome">
-    <h2>Наша рецепція завжди рада допомогти</h2>
+    <h1>{{ $t('reception_message') }}</h1>
+    <router-link to="/catalog">
+      <button>{{ $t('reserve') }}</button>
+    </router-link>
   </div>
-
-  <footer-comp />
+  <footer-bottom></footer-bottom>
 </template>
 
 <script>
-import FooterComp from '@/components/FooterComp.vue';
-import RoomItem from '@/components/RoomItem.vue';
-
+import FooterBottom from '@/components/FooterBottom.vue';
+import CouruselComp from '@/components/CouruselComp.vue';
 export default {
-  components: { FooterComp, RoomItem },
+  components: { FooterBottom, CouruselComp },
   name: 'HomePage',
-  data() {
-    return {
-      rooms: [
-        { id: 1, name: 'Standard Room' },
-        { id: 2, name: 'Suite' },
-      ],
-    };
-  },
-
   methods: {
     exploreMore() {
       alert("Let's explore!");
@@ -50,21 +56,51 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .home-page {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  height: 100vh;
-  background-image: url('https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg'); /* Replace with your image URL */
+  margin-top: 60px;
+  height: 80vh;
+  background-image: url('https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?cs=srgb&dl=pexels-pixabay-258154.jpg&fm=jpg');
+  background-attachment: fixed;
   background-size: cover;
   background-position: center;
   position: relative;
   overflow: hidden;
-}
+  text-align: center;
+  padding: 0 20px;
 
-.home-page h1 {
-  font-size: 12rem;
+  button {
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #222222;
+    font-size: 1.3rem;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      background-color: #866119;
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(134, 97, 25, 0.5);
+    }
+  }
 }
 
 .section {
@@ -72,52 +108,177 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100svh;
+  min-height: 70vh;
+  background-color: #222222;
+}
+
+#welcome {
+  display: flex;
+  position: relative;
+  background-image: url('https://scdn.aro.ie/Sites/50/imperialhotels2022/uploads/images/FullLengthImages/Large/SB12129735_Bedford_Hotel_Interior__Reception._4500x3000.jpg');
   background-size: cover;
   background-position: center;
-  position: relative;
-  overflow: hidden;
+  z-index: 1;
+  padding: 20px;
+  text-align: center;
+  h1 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  button {
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #222222;
+    font-size: 1rem;
+    font-weight: 800;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      background-color: #866119;
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(134, 97, 25, 0.5);
+    }
+  }
+}
+
+#welcome::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.lookAll {
+  display: flex;
+  width: 100%;
+  background-color: #353535;
+  justify-content: flex-end;
+  padding: 10px 20px;
+
+  a {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin: 10px;
+  }
+}
+
+.room-list {
+  width: 100%;
+}
+
+#location {
+  ul {
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+}
+
+.map {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px;
+  background-color: #353535;
+  img {
+    width: 100%;
+    max-width: 40vw;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 900px) {
+      max-width: 70vw;
+    }
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '✓';
+      color: #e3b51f;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  }
+}
+
+.description {
+  background-color: #272727;
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 40px;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 header {
   text-align: center;
-  color: white;
+  color: #ffffff;
   z-index: 2;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
-h1 {
+.title {
   font-size: 7rem;
   color: #ffffff;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    font-size: 10rem;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 15rem;
+  }
 }
 
-p {
-  font-size: 3rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
-}
-
-button {
-  width: 300px;
-  height: 60px;
-  border-radius: 30px;
-  font-size: 1.5rem;
-  background-color: #353535;
-  opacity: 90%;
-  border: none;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  font-weight: bolder;
-}
-
-button:hover {
-  background-color: #2f3cc3;
-  opacity: 100%;
-  transform: translateY(-5px);
-  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

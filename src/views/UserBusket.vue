@@ -8,13 +8,15 @@
           <h2>{{ room.title }}</h2>
           <p>Ціна: {{ room.price }}$ за ніч</p>
           <p>Максимальна кількість осіб: {{ room.maxOccupancy }}</p>
+          <p>Ім'я: {{ room.userName }}</p>
+          <p>Прізвище: {{ room.userSurname }}</p>
           <button @click="removeRoom(index)" class="remove-button">
             Скасувати
           </button>
         </div>
       </div>
     </div>
-    <div class="bucket-container" v-else>
+    <div v-else>
       <p>Список бронювань порожній.</p>
     </div>
   </div>
@@ -39,7 +41,6 @@ export default {
   },
 };
 </script>
-import Swal from 'sweetalert2';
 
 <style lang="scss" scoped>
 $primary-color: #ffffff;
@@ -56,9 +57,9 @@ body {
 }
 
 .bucket-container {
-  width: 80%; // Set width to 80% or any value that suits your design
-  max-width: 600px; // Limit the maximum width (optional)
-  margin: 0 auto; // Center the container horizontally
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
   margin-top: 70px;
   padding: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);

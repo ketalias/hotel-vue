@@ -41,7 +41,6 @@ export default {
   align-items: center;
   margin: 20px;
   padding: 5px;
-  border-radius: 10px;
   background-color: #343434;
 
   label {
