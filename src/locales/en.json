@@ -84,5 +84,24 @@
     "editPricePlaceholder": "Price per night",
     "save": "Save",
     "cancel": "Cancel"
+  },
+  "reservation": {
+    "title": "Room Reservation",
+    "price": "Price",
+    "availability": "Availability",
+    "maxOccupancy": "Max Occupancy",
+    "checkinDate": "Check-in Date",
+    "checkoutDate": "Check-out Date",
+    "name": "Name",
+    "surname": "Surname",
+    "namePlaceholder": "Enter your name",
+    "surnamePlaceholder": "Enter your surname",
+    "reserveButtonAria": "Reserve room",
+    "noRoomMessage": "Room not found.",
+    "successTitle": "Booking Successful!",
+    "successMessage": "Room \"{title}\" has been booked for {checkin} to {checkout} for {name} {surname}.",
+    "errorTitle": "Error!",
+    "errorMessage": "There was an issue with your booking. Please try again.",
+    "confirmButton": "OK"
   }
 }

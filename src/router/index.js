@@ -3,7 +3,6 @@ import HomeView from '../views/HomeView.vue';
 import RoomsCatalog from '@/views/RoomsCatalog.vue';
 import ContactUs from '@/views/ContactUs.vue';
 import AuthorizeIn from '@/views/AuthorizeIn.vue';
-import UserBusket from '@/views/UserBusket.vue';
 import ReservationPage from '@/views/ReservationPage.vue';
 
 const routes = [
@@ -26,11 +25,6 @@ const routes = [
     path: '/authorize',
     name: 'Authorize',
     component: AuthorizeIn,
-  },
-  {
-    path: '/userbusket',
-    name: 'userbusket',
-    component: UserBusket,
   },
   {
     path: '/reserve/:id',

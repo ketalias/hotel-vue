@@ -7,7 +7,7 @@
       </router-link>
     </header>
   </div>
-  <div class="section" id="appartaments">
+  <div class="section" id="apartments">
     <div class="description">
       <h1>{{ $t('apartments_title') }}</h1>
       <p>{{ $t('apartments_description') }}</p>
@@ -19,18 +19,14 @@
       <h1>{{ $t('location_title') }}</h1>
       <p>{{ $t('location_description') }}</p>
     </div>
-    <div class="map">
-      <ul>
+    <div class="map-container">
+      <ul class="features">
         <li>{{ $t('features.excellent_location') }}</li>
         <li>{{ $t('features.free_parking') }}</li>
         <li>{{ $t('features.support_24_7') }}</li>
         <li>{{ $t('features.high_speed_wifi') }}</li>
       </ul>
-      <img
-        src="https://todocodigo.net/img/626.jpg"
-        alt="no-img"
-        class="locationImg"
-      />
+      <div id="map" class="map"></div>
     </div>
   </div>
   <div class="section" id="welcome">
@@ -45,12 +41,37 @@
 <script>
 import FooterBottom from '@/components/FooterBottom.vue';
 import CouruselComp from '@/components/CouruselComp.vue';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
 export default {
-  components: { FooterBottom, CouruselComp },
   name: 'HomePage',
+  components: {
+    FooterBottom,
+    CouruselComp,
+  },
+  mounted() {
+    this.$store.dispatch('fetchRooms');
+    this.initMap();
+  },
   methods: {
-    exploreMore() {
-      alert("Let's explore!");
+    initMap() {
+      const map = L.map('map').setView([48.6236, 22.2982], 15);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19,
+      }).addTo(map);
+
+      L.marker([48.6236, 22.2982])
+        .addTo(map)
+        .bindPopup(
+          `<b>${this.$t('hotel_title')}</b><br>${this.$t(
+            'footer.address_detail'
+          )}`
+        )
+        .openPopup();
     },
   },
 };
@@ -112,6 +133,33 @@ export default {
   background-color: #222222;
 }
 
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  z-index: 2;
+  width: 100%;
+  margin-bottom: 30px;
+
+  h1 {
+    font-size: 7rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+
+    @media (min-width: 768px) {
+      font-size: 10rem;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 15rem;
+    }
+  }
+}
+
 #welcome {
   display: flex;
   position: relative;
@@ -121,11 +169,13 @@ export default {
   z-index: 1;
   padding: 20px;
   text-align: center;
+
   h1 {
     display: flex;
     align-items: center;
     text-align: center;
   }
+
   button {
     padding: 0.8rem 1.2rem;
     border-radius: 5px;
@@ -187,30 +237,46 @@ export default {
 }
 
 #location {
-  ul {
-    @media (max-width: 900px) {
-      display: none;
-    }
-  }
-}
-
-.map {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 20px;
-  background-color: #353535;
-  img {
+  .map-container {
+    display: flex;
+    gap: 24px;
+    align-items: center;
     width: 100%;
-    max-width: 40vw;
+    max-width: 1200px;
+    padding: 20px;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-    @media (max-width: 900px) {
-      max-width: 70vw;
+    .features {
+      flex: 1;
+      list-style: none;
+      padding: 0;
+
+      li {
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          content: '✓';
+          color: #e3b51f;
+          font-weight: bold;
+          margin-right: 10px;
+        }
+      }
+      @media screen and (max-width: 900px) {
+        display: none;
+      }
+    }
+
+    .map {
+      flex: 2;
+      height: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      background: #353535;
     }
   }
 }
@@ -239,7 +305,7 @@ ul {
 
 .description {
   background-color: #272727;
-  display: flex;
+  display: undertaken;
   width: 100%;
   height: auto;
   justify-content: space-evenly;
@@ -252,16 +318,8 @@ ul {
   }
 }
 
-header {
-  text-align: center;
-  color: #ffffff;
-  z-index: 2;
-  width: 100%;
-  margin-bottom: 30px;
-}
-
 .title {
-  font-size: 7rem;
+  font-size: 6rem;
   color: #ffffff;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   margin-bottom: 20px;

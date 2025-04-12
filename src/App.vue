@@ -22,6 +22,10 @@ export default {
 </script>
 
 <style lang="scss">
+.leaflet-marker-icon {
+  background-image: url('https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png');
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;

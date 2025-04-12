@@ -85,5 +85,24 @@
     "editPricePlaceholder": "Ціна за ніч",
     "save": "Зберегти",
     "cancel": "Скасувати"
+  },
+  "reservation": {
+    "title": "Бронювання Номера",
+    "price": "Ціна",
+    "availability": "Доступність",
+    "maxOccupancy": "Максимальна Кількість Осіб",
+    "checkinDate": "Дата Заїзду",
+    "checkoutDate": "Дата Виїзду",
+    "name": "Ім'я",
+    "surname": "Прізвище",
+    "namePlaceholder": "Введіть ваше ім'я",
+    "surnamePlaceholder": "Введіть ваше прізвище",
+    "reserveButtonAria": "Забронювати номер",
+    "noRoomMessage": "Номер не знайдено.",
+    "successTitle": "Бронювання Успішне!",
+    "successMessage": "Номер \"{title}\" заброньовано на дати {checkin} - {checkout} для {name} {surname}.",
+    "errorTitle": "Помилка!",
+    "errorMessage": "Виникла проблема з вашим бронюванням. Спробуйте ще раз.",
+    "confirmButton": "ОК"
   }
 }

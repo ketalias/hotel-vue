@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <div class="title">
+    <header class="header">
       <h1>{{ $t('feedback.title') }}</h1>
-    </div>
-    <div class="form-container">
+    </header>
+    <section class="form-container">
       <div class="contact-form">
         <form @submit.prevent="submitForm">
           <div class="form-group">
@@ -14,9 +14,9 @@
               id="name"
               required
               :placeholder="$t('feedback.namePlaceholder')"
+              aria-label="Name"
             />
           </div>
-
           <div class="form-group">
             <label for="email">{{ $t('feedback.email') }}</label>
             <input
@@ -25,9 +25,9 @@
               id="email"
               required
               :placeholder="$t('feedback.emailPlaceholder')"
+              aria-label="Email"
             />
           </div>
-
           <div class="form-group">
             <label for="message">{{ $t('feedback.message') }}</label>
             <textarea
@@ -35,17 +35,17 @@
               id="message"
               required
               :placeholder="$t('feedback.messagePlaceholder')"
+              aria-label="Message"
             ></textarea>
           </div>
-
           <button type="submit" class="submit-btn">
             {{ $t('feedback.submit') }}
           </button>
         </form>
       </div>
-    </div>
+    </section>
+    <footer-bottom class="footer" />
   </div>
-  <footer-bottom class="footer"></footer-bottom>
 </template>
 
 <script>
@@ -79,91 +79,170 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$primary-bg: #1a1a1a;
+$accent-blue: #1e88e5;
+$text-color: #e0e0e0;
+$secondary-text: #b0b0b0;
+$form-bg: rgba(40, 40, 40, 0.95);
 .container {
-  margin-top: 70px;
-}
-
-.form-container {
+  margin-top: 80px;
+  padding: 0 20px;
+  min-height: 100vh;
   display: flex;
-  align-content: center;
-  justify-content: center;
-  width: 100vw;
-  height: 60vh;
-  background-image: url('https://geniusecommerce.com/wp-content/uploads/2019/07/contact-us-bg-3-C.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.title {
-  height: auto;
-  margin-left: 50px;
-  align-content: center;
-}
-
-.contact-form {
-  width: 40vw;
-  margin: auto;
-  padding: 15px 30px;
-  background-color: rgba(183, 183, 183, 0.8);
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-  .form-group {
+  flex-direction: column;
+  background: $primary-bg;
+  .header {
+    padding: 20px 0;
+    text-align: center;
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $text-color;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+      transition: color 0.3s ease;
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+  }
+  .form-container {
+    flex: 1;
     display: flex;
-    align-content: center;
-    flex-direction: column;
-    label {
-      display: block;
-      margin: 15px 0;
-      font-weight: bold;
-      font-size: 20px;
-      color: #414141;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    background: url('https://sgibenin.com/wp-content/uploads/2016/07/contact-bg-1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.202);
     }
-
-    input,
-    textarea {
-      width: auto;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
+    .contact-form {
+      width: min(90%, 500px);
+      padding: 24px;
+      background: $form-bg;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      animation: slideIn 0.5s ease;
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: $text-color;
+            margin-bottom: 8px;
+          }
+          input,
+          textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 1px solid $secondary-text;
+            border-radius: 8px;
+            background: #333333;
+            color: $text-color;
+            transition: all 0.3s ease;
+            &:focus {
+              outline: none;
+              border-color: $accent-blue;
+              box-shadow: 0 0 0 3px rgba($accent-blue, 0.1);
+              background: #3a3a3a;
+            }
+          }
+          textarea {
+            min-height: 120px;
+            resize: vertical;
+          }
+        }
+        .submit-btn {
+          padding: 12px 24px;
+          font-size: 1rem;
+          font-weight: 600;
+          border: none;
+          border-radius: 8px;
+          background: $accent-blue;
+          color: $text-color;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background: darken($accent-blue, 10%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          }
+          &:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba($accent-blue, 0.3);
+          }
+          &:active {
+            transform: scale(0.98);
+          }
+        }
+      }
     }
-
-    textarea {
-      resize: none;
-      height: 100px;
-    }
+  }
+  .footer {
+    margin-top: auto;
   }
 }
-
-button {
-  padding: 0.8rem 1.2rem;
-  width: 100%;
-  border-radius: 5px;
-  color: #ffffff;
-  background-color: #222222;
-  font-size: 1rem;
-  font-weight: 800;
-  margin-top: 20px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease,
-    box-shadow 0.2s ease;
-
-  &:hover {
-    background-color: #866119;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
   }
-
-  &:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(134, 97, 25, 0.5);
+}
+@media (max-width: 600px) {
+  .container {
+    margin-top: 60px;
+    padding: 0 16px;
+    .header {
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+    .form-container {
+      padding: 20px 0;
+      .contact-form {
+        width: 95%;
+        padding: 20px;
+        form {
+          gap: 16px;
+          .form-group {
+            label {
+              font-size: 0.95rem;
+            }
+            input,
+            textarea {
+              font-size: 0.95rem;
+              padding: 10px 14px;
+            }
+          }
+          .submit-btn {
+            padding: 10px 20px;
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
   }
 }
 </style>
